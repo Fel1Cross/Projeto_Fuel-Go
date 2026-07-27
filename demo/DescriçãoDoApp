@@ -1,0 +1,191 @@
+Ideia Principal
+O FuelGo é uma plataforma de tecnologia logística e marketplace sob demanda (on-demand) que conecta motoristas que necessitam de abastecimento — seja no cotidiano ou em situações de emergência — a postos de combustível credenciados e operados por Veículos de Transporte e Medição (VTM) autorizados pela ANP.
+
+A operação funciona na prática em 6 etapas:
+
+Solicitação: O cliente abre o aplicativo/site, o GPS detecta sua posição exata e o usuário seleciona o veículo cadastrado (ou insere novo), o tipo de combustível e a quantidade desejada (litros ou valor em R$).
+Seleção de Fornecedor: A plataforma exibe postos credenciados num raio operacional de até 10-15 km, mostrando preço por litro, taxa de entrega, tempo estimado de chegada (ETA) e notas de avaliação.
+Despacho Inteligente: Após confirmação do pagamento (Pix, cartão ou saldo digital), o pedido é roteado ao VTM (Veículo de Transporte e Medição) do posto credenciado mais próximo.
+Deslocamento Seguro: O veículo especial equipado com bomba medidora digital aferida pelo INMETRO desloca-se até o local do veículo com rastreamento via GPS em tempo real.
+Procedimento de Abastecimento: O operador certificado estaciona, sinaliza a área com cones e extintores de segurança, conecta o aterramento estático e realiza o bombeamento lacrado diretamente no tanque do veículo.
+Finalização: A medição é encerrada via leitor digital com emissão instantânea da Nota Fiscal Eletrônica (NFe) e comprovante de conformidade da qualidade do combustível.
+2. Problema que o Projeto Resolve
+O FuelGo resolve dores reais de mobilidade urbana e rodoviária:
+
+Pane Seca / Falta de combustível em viagem: Evita o custo elevado e o tempo de espera de guinchos rodoviários, além do risco de multas de trânsito (Infração média conforme art. 180 do CTB).
+Local de difícil acesso ou horário crítico: Carro parado em locais escuros, vias expressas sem acostamento seguro ou postos fechados de madrugada.
+Falta de tempo e conveniência: Profissionais com rotina corrida, mães/pais solo ou frotistas que não desejam perder tempo deslocando veículos até postos de combustíveis.
+Atendimento Emergencial 24h: Garantia de socorro imediato com acionamento do botão SOS.
+Gestão de Frotas Corporativas: Abastecimento direto no pátio da empresa fora do horário de expediente, eliminando tempo ocioso dos motoristas da empresa.
+3. Objetivos do Projeto
+Objetivo Geral
+Desenvolver um ecossistema digital robusto e escalável (aplicativo móvel, aplicação web, app do entregador e dashboard administrativo) que viabilize o abastecimento sob demanda fora do posto de serviços de maneira 100% regulamentada, segura e eficiente.
+
+Objetivos Específicos
+Construir uma interface mobile intuitiva inspirada na experiência de e-commerce e delivery sob demanda.
+Garantir 100% de conformidade técnica com as normas da ANP (Resolução nº 858/2021) e do INMETRO (Portaria nº 518/2021).
+Implementar algoritmo de despacho geográfico para otimização de rotas e redução do tempo médio de entrega para menos de 20 minutos.
+Prover um sistema transparente de rastreamento com telemetria via GPS e laudo de qualidade do combustível na tela.
+Criar um módulo corporativo para gestão de frotas com relatórios automatizados e controle de consumo.
+4. Vantagens do Projeto
+Praticidade Extrema: Abastecer sem sair de casa, do trabalho ou de onde o veículo estiver parado.
+Economia de Tempo: Elimina deslocamentos desnecessários e filas em postos no horário de pico.
+Segurança Reforçada: Evita que o motorista fique vulnerável à noite em locais perigosos aguardando guincho.
+Atendimento Emergencial SOS 24/7: Despacho prioritário em minutos para motoristas com pane seca.
+Tecnologia & Transparência: Rastreamento em tempo real, selo INMETRO de medição e laudo de densidade digital.
+Garantia de Qualidade: Todos os postos parceiros passam por testes periódicos do Programa de Monitoramento da Qualidade dos Combustíveis (PMQC) da ANP.
+5. Desvantagens e Desafios
+Desafio	Mitigação / Solução FuelGo
+Segurança no Transporte & Risco de Combustão	Uso de caminhões/vans VTM homologados com tanques fracionados, extintores industriais, válvulas antichama e mantas de contenção estática.
+Regulamentação e Licenciamento	Atuação restrita aos combustíveis permitidos pela ANP (Gasolina C e Etanol Hidratado) e limitação de operação ao município do posto revendedor.
+Custo de Frete Logístico	Modelo de tarifa dinâmica por distância e passe livre via assinatura mensal FuelGo Pass.
+Volume Limitado por Viagem	Capacidade máxima legal dos VTMs ajustada para até 2.000 litros (2 m³), atendendo múltiplos pedidos por rota.
+Impactos Ambientais	Roteamento otimizado por IA para menor emissão de carbono e kit antipoluição obrigatório no VTM.
+6. Arquitetura Tecnológica
+Tecnologias do Ecossistema
+Localização e Geofencing: Google Maps Platform API / Mapbox / Leaflet para navegação de frota e rastreamento em tempo real.
+Sistemas de Pagamento: Gateway Stripe / Mercado Pago / PagSeguro com suporte a Pix Instantâneo, Cartões de Crédito/Débito e Split de Pagamento automático entre plataforma e posto revendedor.
+Telemetria e IoT: Módulos de GPS acoplados às bombas digitais do VTM enviando dados em tempo real para os servidores da ANP.
+Notificações: Firebase Cloud Messaging (FCM) para push notifications de status do pedido e SMS/WhatsApp de emergência.
+Inteligência Artificial: Algoritmo de roteamento para agrupamento de entregas por proximidade geográfica e previsão de consumo do veículo.
+7. Estrutura do Site & Web App
+O site oficial e o Web App do FuelGo foram organizados nas seguintes seções:
+
+Header / Navegação: Logo com selo ANP, seletor de localização por GPS, botão SOS 24h e alternador de perfil (Cliente / Entregador / Admin).
+Página Inicial (Home): Hero banner dinâmico, seletor de veículos salvos e atalho de pedido ativo.
+Calculadora de Quantidade: Alternância entre Litros (L) e Reais (R$), exibindo o preço estimado instantaneamente.
+Grid de Postos Parceiros: Cards comparativos com filtro de preço, distância, nota e taxa de entrega.
+Checkout / Pagamento: Resumo do abastecimento, endereço com ponto de referência, opções Pix/Cartão/Wallet e resgate de pontos de fidelidade.
+Rastreamento com Mapa Interativo: Visualização do VTM em movimento no mapa com foto do motorista e laudo INMETRO.
+Área de Segurança & FAQ: Informações de conformidade legal, manual de procedimento durante o abastecimento e contatos de suporte.
+8. Diferenciais Inovadores
+Botão de Emergência "SOS 24h": Solicitação com 1 toque que envia a posição GPS com prioridade aos VTMs de plantão.
+Telemetria de Qualidade na Tela: O cliente visualiza a densidade e a temperatura do combustível medidas no momento exato da transferência.
+Plano de Assinatura (FuelGo Pass): Isenção de taxa de entrega para assinantes e abastecimentos programados recorrentes (ex: toda segunda-feira de manhã na garagem do condomínio).
+Integração com Veículos Conectados (OBD-II / Telemetria do Carro): Alerta no app quando o tanque atingir a reserva (15%), sugerindo o agendamento de abastecimento automático.
+Programa FuelPontos: Acúmulo de pontos a cada litro abastecido para troca por descontos, lavagens ou frete grátis.
+9. Público-Alvo
+Motoristas de Passeio / Famílias: Pessoas que buscam comodidade e querem evitar deslocamento a postos de combustível à noite ou nos fins de semana.
+Profissionais e Executivos com Rotina Intensa: Usuários com agenda cheia que priorizam ganho de tempo.
+Motoristas de Aplicativo (Uber/99/Taxis): Profissionais que não podem perder horas de trabalho em filas de postos e buscam combustíveis com desconto via fidelidade.
+Empresas e Gestores de Frotas: PMEs e locadoras que necessitam abastecer múltiplos veículos no próprio pátio da empresa.
+Motoristas em Emergência Rodoviária/Urbana: Condutores surpresos por falta de combustível em rodovias ou vias de trânsito rápido.
+10. Modelo de Negócio
+Taxa de Entrega (Delivery Fee): Valor cobrado por km de deslocamento do VTM (ex: R
+8
+,
+00
+a
+R
+8,00aR 15,00 por entrega).
+Take-rate / Comissão sobre o Combustível: Percentual negociado com os postos parceiros sobre o volume transacionado (ex: 3% a 6%).
+Assinatura Mensal (FuelGo Pass): R$ 29,90/mês para frete grátis ilimitado em pedidos acima de 20 Litros.
+Planos Corporativos (B2B): Tarifação mensal por veículo cadastrado para abastecimento programado de frotas comerciais.
+Publicidade Direcionada: Destaque patrocinado de postos e marcas de lubrificantes e aditivos no aplicativo.
+11. Sustentabilidade & Cuidados Ambientais
+Roteamento Inteligente com Redução de CO₂: Agrupamento de entregas em raio curto evita deslocamento individual de múltiplos carros até os postos, diminuindo a emissão total de poluentes.
+Protocolo Antivazamento VTM: Válvula de fechamento automático por pressão na ponta da mangueira (dry-break), prevenindo qualquer gota de derramamento no solo.
+Kits Ambientais de Emergência a Bordo: Todos os VTMs carregam mantas absorventes de hidrocarbonetos, turfa orgânica e barreiras de contenção segundo normas da ABNT e IBAMA.
+12. Identidade Visual & Conceito da Marca
+Nome do Aplicativo: FuelGO
+Slogan: "Combustível onde você estiver"
+Paleta de Cores:
+Energy Orange (#FF5500): Representa agilidade, combustível e tecnologia.
+Electric Amber (#FFAA00): Destaque de preços, pontos de fidelidade e alertas.
+Deep Slate (#090D16 e #131B2E): Fundo escuro premium, moderno e confortável aos olhos.
+Emergency Red (#FF2E4D): Identificação de botão SOS e chamados urgentes.
+Safety Teal (#10B981): Aprovado ANP, selos de qualidade e confirmações.
+Tipografia: Outfit para títulos dinâmicos e Plus Jakarta Sans para leitura limpa das informações de preço e medição.
+13 a 24. Estrutura de Telas do Aplicativo
+Tela Inicial (Home)
+Logo FuelGo, endereço atual capturado por GPS com opção de troca, botão de emergência SOS em destaque vermelho pulsante, seletor de veículos da garagem, cards de tipos de combustível (Gasolina Comum, Aditivada, Etanol, Diesel), calculadora rápida e grid de postos credenciados.
+
+Escolha do Combustível & Quantidade
+Controle deslizante ou botões rápidos de litros (10L, 20L, 30L, 40L, Tanque Cheio) ou valores em Reais (R
+50
+,
+R
+50,R 100, R
+150
+,
+R
+150,R 200), recalculando a estimativa final em tempo real.
+
+Lista de Fornecedores Próximos
+Exibição de postos cadastrados com foto do estabelecimento, nota de avaliação (ex: 4.9 ★), distância em km, preço por litro, taxa de entrega e selo de conformidade ANP Resolução 858/2021.
+
+Tela de Pedido & Checkout
+Detalhamento de combustível, quantidade, veículo cadastrado, endereço com ponto de referência, formas de pagamento (Pix com 2% de desconto, Cartão de Crédito/Débito e Saldo FuelGo Cash), opção de resgate de FuelPontos e valor total transparente.
+
+Rastreamento do Pedido em Tempo Real
+Mapa com API Leaflet/CartoDB exibindo o deslocamento do caminhão VTM em tempo real, indicador visual de etapas (Pedido Confirmado ➔ VTM a Caminho ➔ Sinalização de Segurança ➔ Abastecimento Concluído), dados do operador certificado e número do lacre do INMETRO.
+
+Garagem Digital & Perfil
+Cadastro de múltiplos veículos com marca, modelo, placa e indicação do combustível recomendado para evitar erros no abastecimento.
+
+25. Dashboard Administrativo (Painel de Gestão)
+Painel centralizado para a equipe de gestão da plataforma e para os proprietários de postos credenciados:
+
+KPIs em Tempo Real: Volume total abastecido no dia (litros), faturamento bruto, número de entregas ativas e taxa de satisfação.
+Tabela de Pedidos em Andamento: Status individual de cada chamado, VTM alocado e localização em mapa da frota.
+Logs de Transmissão ANP: Registro automatizado de telemetria enviado à ANP e relatórios do Programa de Monitoramento da Qualidade (PMQC).
+Gestão de Estoque & Tanques: Nível dos reservatórios dos postos e escala de operadores VTM.
+26. Aplicativo do Entregador (Operador VTM)
+Interface otimizada para o motorista/operador do Veículo de Transporte e Medição:
+
+Status Online/Offline: Botão para ativar disponibilidade de atendimento no turno.
+Recebimento de Chamados: Alertas sonoros e visuais com botão de aceite de entrega, endereço e rota no GPS.
+Checklist Obrigatório de Segurança ANP: Validação diária de extintores, 4 cones de sinalização, mangueiras e lacres do INMETRO antes de iniciar a rodagem.
+Comprovante de Medição Digital: Registro da litragem bombeada com envio direto para a nota fiscal do cliente.
+28. Arquitetura Técnica Recomendada
+
++-----------------------------------------------------------------------+
+|                             FRONTEND                                  |
+|   React / Next.js (Web App Responsivo & Dashboard) + Leaflet / Mapbox  |
+|   React Native / Flutter (Aplicativo Mobile iOS & Android)            |
++-----------------------------------------------------------------------+
+                                   | REST API / WebSockets
+                                   v
++-----------------------------------------------------------------------+
+|                             BACKEND                                   |
+|   Node.js (Express / NestJS) ou Python (FastAPI)                      |
+|   - Servidor WebSockets para rastreamento em tempo real (GPS VTM)    |
+|   - Algoritmo de roteamento dinâmico e geofencing                     |
+|   - Gateway de Pagamentos (Pix, Cartão, Split automático)             |
+|   - Integração com Web Services da ANP e RFB (Emissão de NFe)         |
++-----------------------------------------------------------------------+
+                                   | 
+                                   v
++-----------------------------------------------------------------------+
+|                           BANCO DE DADOS                              |
+|   PostgreSQL (com extensão PostGIS para consultas geográficas)        |
+|   Redis (Cache de alta performance para localização dos VTMs)          |
++-----------------------------------------------------------------------+
+29. Protótipo Funcional
+O protótipo funcional em código web responsivo foi desenvolvido no projeto e está pronto para testes interativos no diretório do projeto:
+
+Arquivos do Protótipo:
+index.html
+ (Estrutura principal da aplicação, modalidades Cliente, Entregador e Admin)
+styles.css
+ (Sistema de design visual dark mode glassmorphism)
+app.js
+ (Lógica de calculadora, mapa Leaflet com marcador VTM em movimento, checkout e SOS)
+30. Regulamentação Aplicável e Fontes Reais
+A operação do FuelGo é embasada em normas regulatórias oficiais do setor de combustíveis no Brasil:
+
+Resolução ANP nº 858/2021 (Agência Nacional do Petróleo, Gás Natural e Biocombustíveis):
+Regulamenta a atividade de abastecimento de combustíveis fora do posto revendedor (delivery).
+Restringe a entrega a Gasolina C e Etanol Hidratado.
+Exige que o posto possua autorização específica da ANP, esteja adimplente com o PMQC e opere no mesmo município do estabelecimento.
+Obriga o veículo entregador (VTM) a possuir sistema de GPS integrado com acesso contínuo disponibilizado à ANP.
+Fonte oficial: Governo Federal / ANP - Resolução nº 858/2021
+Portaria INMETRO nº 518/2021 (Instituto Nacional de Metrologia, Qualidade e Tecnologia):
+Define os requisitos técnicos e metrológicos para bombas medidoras acopladas a veículos de transporte e medição (VTM).
+Exige lacres invioláveis, aferição periódica e display digital visível com contagem de litragem.
+Fonte oficial: INMETRO - Atos Normativos
+Normas de Segurança ABNT / CONAMA:
+ABNT NBR 17505: Armazenamento e manuseio de líquidos inflamáveis e combustíveis.
+ABNT NBR 7500: Identificação para o transporte terrestre, manuseio e estocagem de produtos perigosos (sinalização e cones).
+31. Instruções para Executar o Protótipo no VS Code
+Para visualizar e testar o protótipo funcional do FuelGo no seu computador:
